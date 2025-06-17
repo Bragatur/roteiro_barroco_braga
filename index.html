@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +6,15 @@
   <title>Roteiro do Barroco</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+  <style>
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .animate-fade-in {
+      animation: fade-in 1s ease-in-out;
+    }
+  </style>
 </head>
 <body class="m-0 p-0 font-sans text-white bg-cover bg-center bg-fixed" style="background-image: url('https://raw.githubusercontent.com/Bragatur/roteiro_barroco_braga/main/Mockup_02.jpg');">
   <div class="bg-black/60 backdrop-blur-sm min-h-screen flex items-center justify-center p-5 animate-fade-in">
@@ -32,7 +40,6 @@
 
       <!-- Botões de download -->
       <div class="flex flex-col items-center gap-4 mb-6">
-        <!-- Os links devem ter a classe `hidden` inicialmente exceto o EN -->
         <a id="btn-pt" class="link-button hidden">Guia em Português</a>
         <a id="btn-es" class="link-button hidden">Guía en Español</a>
         <a id="btn-en" class="link-button flex items-center justify-center gap-2 px-6 py-3 max-w-xs rounded-full text-white font-bold bg-blue-600 hover:bg-blue-700 shadow-lg transition"><i class="lni lni-download"></i>Guide in English</a>
@@ -69,7 +76,7 @@
     function setLanguage(lang) {
       const content = texts[lang] || texts.en;
       document.getElementById("title").innerText = content.title;
-      document.get.getElementById("description").innerText = content.description;
+      document.getElementById("description").innerText = content.description;
       document.documentElement.lang = lang;
       document.title = content.title;
 
@@ -86,7 +93,7 @@
       }
     }
 
-    setLanguage("en"); // Idioma inicial
+    setLanguage("en");
   </script>
 </body>
 </html>
