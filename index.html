@@ -18,7 +18,7 @@
     }
 
     .overlay {
-      background-color: rgba(0, 0, 0, 0.5); /* leve escurecimento para legibilidade */
+      background-color: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(3px);
       min-height: 100vh;
       display: flex;
@@ -40,7 +40,6 @@
       width: 100%;
       padding: 30px 20px;
       border-radius: 20px;
-      /* fundo removido aqui */
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -62,20 +61,28 @@
       padding: 0;
       cursor: pointer;
       flex-shrink: 0;
+      transition: transform 0.2s ease;
+      border-radius: 5px;
+      overflow: hidden;
+      width: 40px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lang-buttons button:hover,
+    .lang-buttons button:focus {
+      transform: scale(1.1);
+      outline: none;
     }
 
     .lang-buttons img {
-      width: 40px;
+      width: 100%;
       height: auto;
-      border-radius: 5px;
-      transition: transform 0.2s;
       display: block;
-    }
-
-    .lang-buttons img:hover,
-    .lang-buttons button:focus img {
-      transform: scale(1.1);
-      outline: none;
+      user-select: none;
+      pointer-events: none;
     }
 
     h1 {
@@ -145,8 +152,9 @@
         font-size: 1em;
       }
 
-      .lang-buttons img {
+      .lang-buttons button {
         width: 35px;
+        height: 26px;
       }
 
       .link-button {
@@ -161,17 +169,39 @@
   <div class="overlay">
     <main>
       <div class="lang-buttons" role="group" aria-label="Selecione seu idioma">
-        <button onclick="setLanguage('pt')" aria-label="Português"><img src="https://flagcdn.com/w40/pt.png" alt="Português" /></button>
-        <button onclick="setLanguage('es')" aria-label="Español"><img src="https://flagcdn.com/w40/es.png" alt="Español" /></button>
-        <button onclick="setLanguage('en')" aria-label="English"><img src="https://flagcdn.com/w40/gb.png" alt="English" /></button>
-        <button onclick="setLanguage('fr')" aria-label="Français"><img src="https://flagcdn.com/w40/fr.png" alt="Français" /></button>
-        <button onclick="setLanguage('it')" aria-label="Italiano"><img src="https://flagcdn.com/w40/it.png" alt="Italiano" /></button>
-        <button onclick="setLanguage('de')" aria-label="Deutsch"><img src="https://flagcdn.com/w40/de.png" alt="Deutsch" /></button>
-        <button onclick="setLanguage('pl')" aria-label="Polski"><img src="https://flagcdn.com/w40/pl.png" alt="Polski" /></button>
-        <button onclick="setLanguage('zh')" aria-label="中文"><img src="https://flagcdn.com/w40/cn.png" alt="中文" /></button>
-        <button onclick="setLanguage('ja')" aria-label="日本語"><img src="https://flagcdn.com/w40/jp.png" alt="日本語" /></button>
-        <button onclick="setLanguage('ru')" aria-label="Русский"><img src="https://flagcdn.com/w40/ru.png" alt="Русский" /></button>
-        <button onclick="setLanguage('nl')" aria-label="Nederlands"><img src="https://flagcdn.com/w40/nl.png" alt="Nederlands" /></button>
+        <button onclick="setLanguage('pt')" aria-label="Português">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/pt.svg" alt="Português" />
+        </button>
+        <button onclick="setLanguage('es')" aria-label="Español">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/es.svg" alt="Español" />
+        </button>
+        <button onclick="setLanguage('en')" aria-label="English">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/gb.svg" alt="English" />
+        </button>
+        <button onclick="setLanguage('fr')" aria-label="Français">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/fr.svg" alt="Français" />
+        </button>
+        <button onclick="setLanguage('it')" aria-label="Italiano">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/it.svg" alt="Italiano" />
+        </button>
+        <button onclick="setLanguage('de')" aria-label="Deutsch">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/de.svg" alt="Deutsch" />
+        </button>
+        <button onclick="setLanguage('pl')" aria-label="Polski">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/pl.svg" alt="Polski" />
+        </button>
+        <button onclick="setLanguage('zh')" aria-label="中文">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/cn.svg" alt="中文" />
+        </button>
+        <button onclick="setLanguage('ja')" aria-label="日本語">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/jp.svg" alt="日本語" />
+        </button>
+        <button onclick="setLanguage('ru')" aria-label="Русский">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/ru.svg" alt="Русский" />
+        </button>
+        <button onclick="setLanguage('nl')" aria-label="Nederlands">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/nl.svg" alt="Nederlands" />
+        </button>
       </div>
       <h1 id="title">Roteiro do Barroco em Braga</h1>
       <p id="description">Selecione seu idioma para baixar o roteiro turístico:</p>
