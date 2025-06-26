@@ -64,8 +64,8 @@
       transition: transform 0.2s ease;
       border-radius: 5px;
       overflow: hidden;
-      width: 32px;
-      height: 23px;
+      width: 40px;
+      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -157,8 +157,8 @@
       }
 
       .lang-buttons button {
-        width: 28px;
-        height: 20px;
+        width: 36px;
+        height: 25px;
       }
 
       .link-button {
@@ -173,6 +173,7 @@
   <div class="overlay">
     <main>
       <div class="lang-buttons" role="group" aria-label="Selecione seu idioma">
+        <!-- Botões de idiomas -->
         <button onclick="setLanguage('pt')" aria-label="Português"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/pt.svg" alt="Português" /></button>
         <button onclick="setLanguage('es')" aria-label="Español"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/es.svg" alt="Español" /></button>
         <button onclick="setLanguage('en')" aria-label="English"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/gb.svg" alt="English" /></button>
@@ -237,12 +238,9 @@
       document.documentElement.lang = lang;
       document.title = content.title;
 
-      // Remover seleção anterior
       document.querySelectorAll(".lang-buttons button").forEach((b) =>
         b.classList.remove("selected")
       );
-
-      // Adicionar classe ao botão atual
       const selectedBtn = [...document.querySelectorAll(".lang-buttons button")].find((b) =>
         b.getAttribute("onclick").includes(`setLanguage('${lang}')`)
       );
