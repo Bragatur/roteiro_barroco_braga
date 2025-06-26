@@ -64,8 +64,8 @@
       transition: transform 0.2s ease;
       border-radius: 5px;
       overflow: hidden;
-      width: 40px;
-      height: 30px;
+      width: 32px;
+      height: 23px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,6 +75,11 @@
     .lang-buttons button:focus {
       transform: scale(1.1);
       outline: none;
+    }
+
+    .lang-buttons button.selected {
+      box-shadow: 0 0 0 2px white;
+      transform: scale(1.15);
     }
 
     .lang-buttons img {
@@ -136,7 +141,6 @@
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
 
-    /* Responsividade para smartphones */
     @media (max-width: 600px) {
       main {
         padding: 20px 15px;
@@ -153,8 +157,8 @@
       }
 
       .lang-buttons button {
-        width: 35px;
-        height: 26px;
+        width: 28px;
+        height: 20px;
       }
 
       .link-button {
@@ -169,50 +173,21 @@
   <div class="overlay">
     <main>
       <div class="lang-buttons" role="group" aria-label="Selecione seu idioma">
-        <button onclick="setLanguage('pt')" aria-label="Português">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/pt.svg" alt="Português" />
-        </button>
-        <button onclick="setLanguage('es')" aria-label="Español">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/es.svg" alt="Español" />
-        </button>
-        <button onclick="setLanguage('en')" aria-label="English">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/gb.svg" alt="English" />
-        </button>
-        <button onclick="setLanguage('fr')" aria-label="Français">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/fr.svg" alt="Français" />
-        </button>
-        <button onclick="setLanguage('it')" aria-label="Italiano">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/it.svg" alt="Italiano" />
-        </button>
-        <button onclick="setLanguage('de')" aria-label="Deutsch">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/de.svg" alt="Deutsch" />
-        </button>
-        <button onclick="setLanguage('pl')" aria-label="Polski">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/pl.svg" alt="Polski" />
-        </button>
-        <button onclick="setLanguage('zh')" aria-label="中文">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/cn.svg" alt="中文" />
-        </button>
-        <button onclick="setLanguage('ja')" aria-label="日本語">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/jp.svg" alt="日本語" />
-        </button>
-        <button onclick="setLanguage('ru')" aria-label="Русский">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/ru.svg" alt="Русский" />
-        </button>
-        <button onclick="setLanguage('nl')" aria-label="Nederlands">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/nl.svg" alt="Nederlands" />
-        </button>
+        <button onclick="setLanguage('pt')" aria-label="Português"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/pt.svg" alt="Português" /></button>
+        <button onclick="setLanguage('es')" aria-label="Español"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/es.svg" alt="Español" /></button>
+        <button onclick="setLanguage('en')" aria-label="English"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/gb.svg" alt="English" /></button>
+        <button onclick="setLanguage('fr')" aria-label="Français"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/fr.svg" alt="Français" /></button>
+        <button onclick="setLanguage('it')" aria-label="Italiano"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/it.svg" alt="Italiano" /></button>
+        <button onclick="setLanguage('de')" aria-label="Deutsch"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/de.svg" alt="Deutsch" /></button>
+        <button onclick="setLanguage('pl')" aria-label="Polski"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/pl.svg" alt="Polski" /></button>
+        <button onclick="setLanguage('zh')" aria-label="中文"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/cn.svg" alt="中文" /></button>
+        <button onclick="setLanguage('ja')" aria-label="日本語"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/jp.svg" alt="日本語" /></button>
+        <button onclick="setLanguage('ru')" aria-label="Русский"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/ru.svg" alt="Русский" /></button>
+        <button onclick="setLanguage('nl')" aria-label="Nederlands"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/flags/4x3/nl.svg" alt="Nederlands" /></button>
       </div>
       <h1 id="title">Roteiro do Barroco em Braga</h1>
       <p id="description">Selecione seu idioma para baixar o roteiro turístico:</p>
-      <a
-        id="download-button"
-        class="link-button"
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-hidden="true"
-      >
+      <a id="download-button" class="link-button" href="#" target="_blank" rel="noopener noreferrer" aria-hidden="true">
         <i class="lni lni-download"></i> Download
       </a>
       <div class="footer">© Município de Braga</div>
@@ -221,61 +196,17 @@
 
   <script>
     const texts = {
-      pt: {
-        title: "Roteiro do Barroco em Braga",
-        description: "Descarregue o roteiro turístico em português:",
-        label: "Guia em Português",
-      },
-      es: {
-        title: "Ruta del Barroco en Braga",
-        description: "Descargue la guía turística en español:",
-        label: "Guía en Español",
-      },
-      en: {
-        title: "Baroque Route in Braga",
-        description: "Download the tourist guide in English:",
-        label: "Guide in English",
-      },
-      fr: {
-        title: "Itinéraire Baroque à Braga",
-        description: "Téléchargez le guide touristique en français:",
-        label: "Guide en Français",
-      },
-      it: {
-        title: "Itinerario Barocco a Braga",
-        description: "Scarica la guida turistica in italiano:",
-        label: "Guida in Italiano",
-      },
-      de: {
-        title: "Barockroute in Braga",
-        description: "Laden Sie den Reiseführer auf Deutsch herunter:",
-        label: "Reiseführer auf Deutsch",
-      },
-      pl: {
-        title: "Szlak Barokowy w Bradze",
-        description: "Pobierz przewodnik turystyczny po polsku:",
-        label: "Przewodnik po Polsku",
-      },
-      zh: {
-        title: "布拉加巴洛克路线",
-        description: "下载中文旅游指南：",
-        label: "中文指南",
-      },
-      ja: {
-        title: "ブラガのバロックルート",
-        description: "日本語の旅行ガイドをダウンロード：",
-        label: "日本語ガイド",
-      },
-      ru: {
-        title: "Барочный маршрут в Браге",
-        description: "Скачайте туристический гид на русском языке:",
-        label: "Гид на русском",
-      },
-      nl: {
-        title: "Barokroute in Braga",
-        description: "Download de toeristische gids in het Nederlands:",
-        label: "Gids in het Nederlands",
-      },
+      pt: { title: "Roteiro do Barroco em Braga", description: "Descarregue o roteiro turístico em português:", label: "Guia em Português" },
+      es: { title: "Ruta del Barroco en Braga", description: "Descargue la guía turística en español:", label: "Guía en Español" },
+      en: { title: "Baroque Route in Braga", description: "Download the tourist guide in English:", label: "Guide in English" },
+      fr: { title: "Itinéraire Baroque à Braga", description: "Téléchargez le guide touristique en français:", label: "Guide en Français" },
+      it: { title: "Itinerario Barocco a Braga", description: "Scarica la guida turistica in italiano:", label: "Guida in Italiano" },
+      de: { title: "Barockroute in Braga", description: "Laden Sie den Reiseführer auf Deutsch herunter:", label: "Reiseführer auf Deutsch" },
+      pl: { title: "Szlak Barokowy w Bradze", description: "Pobierz przewodnik turystyczny po polsku:", label: "Przewodnik po Polsku" },
+      zh: { title: "布拉加巴洛克路线", description: "下载中文旅游指南：", label: "中文指南" },
+      ja: { title: "ブラガのバロックルート", description: "日本語の旅行ガイドをダウンロード：", label: "日本語ガイド" },
+      ru: { title: "Барочный маршрут в Браге", description: "Скачайте туристический гид на русском языке:", label: "Гид на русском" },
+      nl: { title: "Barokroute in Braga", description: "Download de toeristische gids in het Nederlands:", label: "Gids in het Nederlands" },
     };
 
     const pdfLinks = {
@@ -293,7 +224,7 @@
     };
 
     function setLanguage(lang) {
-      if (!texts[lang]) lang = "en"; // fallback
+      if (!texts[lang]) lang = "en";
       const content = texts[lang];
       const btn = document.getElementById("download-button");
 
@@ -305,9 +236,19 @@
       btn.setAttribute("aria-hidden", "false");
       document.documentElement.lang = lang;
       document.title = content.title;
+
+      // Remover seleção anterior
+      document.querySelectorAll(".lang-buttons button").forEach((b) =>
+        b.classList.remove("selected")
+      );
+
+      // Adicionar classe ao botão atual
+      const selectedBtn = [...document.querySelectorAll(".lang-buttons button")].find((b) =>
+        b.getAttribute("onclick").includes(`setLanguage('${lang}')`)
+      );
+      if (selectedBtn) selectedBtn.classList.add("selected");
     }
 
-    // Detect user language or fallback to English
     const userLang = navigator.language.toLowerCase().split("-")[0];
     const supported = Object.keys(texts);
     setLanguage(supported.includes(userLang) ? userLang : "en");
