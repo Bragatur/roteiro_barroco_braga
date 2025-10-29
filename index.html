@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Roteiro do Barroco em Braga</title>
   <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"></noscript>
   <style>
     html, body {
       margin: 0;
@@ -97,7 +99,7 @@
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
 
-    /* Botão flutuante de idiomas com legenda horizontal */
+    /* Botão flutuante de idiomas (Canto Inferior Direito) */
     .lang-dropdown {
       position: fixed;
       bottom: 20px;
@@ -116,6 +118,110 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* --- Estilos do Novo Menu Flutuante (Canto Superior Direito) --- */
+
+    .menu-dropdown {
+      position: fixed;
+      top: 20px; 
+      right: 20px; 
+      z-index: 1001; 
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; 
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: floatInTop 0.8s ease forwards 1.2s;
+    }
+
+    @keyframes floatInTop {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .menu-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ESTILO DO BOTÃO DE MENU (braga 3 dias_v3) */
+    .menu-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: #f7a01d; 
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem; 
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .menu-icon:hover {
+      transform: scale(1.1);
+      background-color: #e6911c; 
+    }
+    /* FIM ESTILO DO BOTÃO DE MENU */
+
+    .menu-options {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px; 
+      align-items: flex-end; 
+    }
+
+    .menu-options.show {
+      display: flex;
+      animation: fadeSlideDown 0.4s ease forwards;
+    }
+
+    /* ESTILO DOS LINKS DO MENU (ADICIONADO FLEX) */
+    .menu-option-link {
+      display: flex; /* Adicionado para alinhar texto e ícone */
+      align-items: center; 
+      justify-content: flex-end; /* Alinhar à direita (texto esq, ícone dir) */
+      gap: 8px; /* Espaçamento entre texto e ícone */
+      
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 8px 12px;
+      border-radius: 12px;
+      text-align: right; 
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateY(-10px); 
+      animation: optionPopDown 0.35s ease forwards;
+    }
+
+    .menu-option-link:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        transform: scale(1.05);
+    }
+
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes optionPopDown {
+      0% { opacity: 0; transform: translateY(-10px) scale(0.8); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .menu-options.show .menu-option-link:nth-child(n) {
+      animation-delay: calc(0.05s * var(--i));
+    }
+
+    /* --- FIM: Estilos do Novo Menu Flutuante --- */
+
     .lang-label {
       background-color: rgba(0, 0, 0, 0.5);
       color: #fff;
@@ -125,6 +231,7 @@
       margin-top: 8px;
       letter-spacing: 0.5px;
       user-select: none;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
       text-align: center;
       transition: opacity 0.3s;
       white-space: nowrap;
@@ -176,7 +283,7 @@
       background-color: #555;
       opacity: 0;
       transform: translateY(10px);
-      animation: optionPop 0.35s ease forwards;
+      animation: optionPopRight 0.35s ease forwards;
     }
 
     @keyframes fadeSlide {
@@ -184,7 +291,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes optionPop {
+    @keyframes optionPopRight { 
       0% { opacity: 0; transform: translateY(10px) scale(0.8); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
@@ -207,6 +314,15 @@
     </main>
   </div>
 
+  <div class="menu-dropdown">
+    <div class="menu-main">
+      <div id="menu-toggler" class="menu-icon">
+        <i class="fa-solid fa-bars"></i> </div>
+    </div>
+    <div class="menu-options" id="menu-options">
+      </div>
+  </div>
+
   <div class="lang-dropdown">
     <div class="lang-main">
       <div id="current-lang" class="lang-icon">PT</div>
@@ -220,7 +336,7 @@
       pt: { title: "Roteiro do Barroco em Braga", description: "Descarregue o roteiro turístico em português:", label: "Guia em Português", langLabel: "Alterar idioma" },
       es: { title: "Ruta del Barroco en Braga", description: "Descargue la guía turística en español:", label: "Guía en Español", langLabel: "Cambiar idioma" },
       en: { title: "Baroque Route in Braga", description: "Download the tourist guide in English:", label: "Guide in English", langLabel: "Change language" },
-      fr: { title: "Itinéraire Baroque à Braga", description: "Téléchargez le guide touristique en français:", label: "Guide en Français", langLabel: "Changer de langue" },
+      fr: { title: "Itinéraire Baroque à Braga", description: "Téléchargez le guide touristique en français:", label: "Guia en Français", langLabel: "Changer de langue" },
       it: { title: "Itinerario Barocco a Braga", description: "Scarica la guida turistica in italiano:", label: "Guida in Italiano", langLabel: "Cambia lingua" },
       de: { title: "Barockroute in Braga", description: "Laden Sie den Reiseführer auf Deutsch herunter:", label: "Reiseführer auf Deutsch", langLabel: "Sprache ändern" },
       pl: { title: "Szlak Barokowy w Bradze", description: "Pobierz przewodnik turystyczny po polsku:", label: "Przewodnik po Polsku", langLabel: "Zmień język" },
@@ -243,6 +359,117 @@
       ru: "https://raw.githubusercontent.com/Bragatur/roteiro_barroco_braga/main/Roteiro%20do%20Barroco%20%5BRUSSIAN%5D.pdf",
       nl: "https://raw.githubusercontent.com/Bragatur/roteiro_barroco_braga/main/Roteiro%20do%20Barroco%20%5BHoland%C3%AAs%5D%20v2025.pdf"
     };
+    
+    // Mapeamento dos Ícones para os Nomes dos Roteiros
+    const menuIcons = {
+        "Mapa Turístico de Braga": "fa-solid fa-map",
+        "Descobrir Braga em 3 dias": "fa-solid fa-route",
+        "Roteiro Infantil": "fa-solid fa-child-reaching",
+        "Braga After Dark": "fa-solid fa-moon",
+        "Braga Tourist Map": "fa-solid fa-map",
+        "Discover Braga in 3 days": "fa-solid fa-route",
+        "Children's Route": "fa-solid fa-child-reaching",
+        "Descubrir Braga en 3 días": "fa-solid fa-route",
+        "Ruta Infantil": "fa-solid fa-child-reaching",
+        "Carte Touristique de Braga": "fa-solid fa-map",
+        "Découvrir Braga en 3 jours": "fa-solid fa-route",
+        "Itinéraire Enfants": "fa-solid fa-child-reaching",
+        "Mappa Turistica di Braga": "fa-solid fa-map",
+        "Scopri Braga in 3 giorni": "fa-solid fa-route",
+        "Itinerario per Bambini": "fa-solid fa-child-reaching",
+        "Touristenkarte von Braga": "fa-solid fa-map",
+        "Braga in 3 Tagen entdecken": "fa-solid fa-route",
+        "Kinderroute": "fa-solid fa-child-reaching",
+        "Mapa Turystyczna Bragi": "fa-solid fa-map",
+        "Odkryj Bragę w 3 dni": "fa-solid fa-route",
+        "Trasa dla Dzieci": "fa-solid fa-child-reaching",
+        "布拉加旅游地图": "fa-solid fa-map",
+        "3天探索布拉加": "fa-solid fa-route",
+        "儿童路线": "fa-solid fa-child-reaching",
+        "ブラガ観光地図": "fa-solid fa-map",
+        "3日間でブラガを発見": "fa-solid fa-route",
+        "子供向けルート": "fa-solid fa-child-reaching",
+        "ブラガ・アフター・ダーク": "fa-solid fa-moon",
+        "Туристическая карта Браги": "fa-solid fa-map",
+        "Откройте для себя Брагу за 3 дня": "fa-solid fa-route",
+        "Детский маршрут": "fa-solid fa-child-reaching",
+        "Брага После Заката": "fa-solid fa-moon",
+        "Toeristenkaart van Braga": "fa-solid fa-map",
+        "Ontdek Braga in 3 dagen": "fa-solid fa-route",
+        "Kinderroute": "fa-solid fa-child-reaching",
+        // Adicionar outros ícones se necessário
+    };
+
+    // LISTA DE ROTEIROS ATUALIZADA (SEM O ROTEIRO DO BARROCO E COM TODAS AS TRADUÇÕES)
+    const menuTranslations = {
+        pt: [
+            { name: "Mapa Turístico de Braga", url: "https://bragatur.github.io/mapas/" },
+            { name: "Descobrir Braga em 3 dias", url: "https://bragatur.github.io/roteiros/" },
+            { name: "Roteiro Infantil", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "Braga After Dark", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        en: [
+            { name: "Braga Tourist Map", url: "https://bragatur.github.io/mapas/" },
+            { name: "Discover Braga in 3 days", url: "https://bragatur.github.io/roteiros/" },
+            { name: "Children's Route", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "Braga After Dark", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        es: [
+            { name: "Mapa Turístico de Braga", url: "https://bragatur.github.io/mapas/" },
+            { name: "Descubrir Braga en 3 días", url: "https://bragatur.github.io/roteiros/" },
+            { name: "Ruta Infantil", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "Braga After Dark", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        fr: [
+            { name: "Carte Touristique de Braga", url: "https://bragatur.github.io/mapas/" },
+            { name: "Découvrir Braga en 3 jours", url: "https://bragatur.github.io/roteiros/" },
+            { name: "Itinéraire Enfants", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "Braga After Dark", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        it: [
+            { name: "Mappa Turistica di Braga", url: "https://bragatur.github.io/mapas/" },
+            { name: "Scopri Braga in 3 giorni", url: "https://bragatur.github.io/roteiros/" },
+            { name: "Itinerario per Bambini", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "Braga After Dark", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        de: [
+            { name: "Touristenkarte von Braga", url: "https://bragatur.github.io/mapas/" },
+            { name: "Braga in 3 Tagen entdecken", url: "https://bragatur.github.io/roteiros/" },
+            { name: "Kinderroute", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "Braga After Dark", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        pl: [
+            { name: "Mapa Turystyczna Bragi", url: "https://bragatur.github.io/mapas/" },
+            { name: "Odkryj Bragę w 3 dni", url: "https://bragatur.github.io/roteiros/" },
+            { name: "Trasa dla Dzieci", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "Braga After Dark", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        zh: [
+            { name: "布拉加旅游地图", url: "https://bragatur.github.io/mapas/" },
+            { name: "3天探索布拉加", url: "https://bragatur.github.io/roteiros/" },
+            { name: "儿童路线", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "Braga After Dark", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        ja: [
+            { name: "ブラガ観光地図", url: "https://bragatur.github.io/mapas/" },
+            { name: "3日間でブラガを発見", url: "https://bragatur.github.io/roteiros/" },
+            { name: "子供向けルート", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "ブラガ・アフター・ダーク", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        ru: [
+            { name: "Туристическая карта Браги", url: "https://bragatur.github.io/mapas/" },
+            { name: "Откройте для себя Брагу за 3 дня", url: "https://bragatur.github.io/roteiros/" },
+            { name: "Детский маршрут", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "Брага После Заката", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        nl: [
+            { name: "Toeristenkaart van Braga", url: "https://bragatur.github.io/mapas/" },
+            { name: "Ontdek Braga in 3 dagen", url: "https://bragatur.github.io/roteiros/" },
+            { name: "Kinderroute", url: "https://bragatur.github.io/roteiro_intantil/" },
+            { name: "Braga After Dark", url: "https://bragatur.github.io/bragaafterdark/" }
+        ],
+        // Fallback: se não houver tradução específica, usa-se a de PT
+    };
 
     const flagMap = { pt: 'PT', es: 'ES', en: 'EN', fr: 'FR', it: 'IT', de: 'DE', pl: 'PL', zh: '中文', ja: '日', ru: 'RU', nl: 'NL' };
     const dropdown = document.querySelector('.lang-dropdown');
@@ -250,6 +477,43 @@
     const options = dropdown.querySelector('.lang-options');
     const langLabel = document.getElementById('lang-label');
 
+    const menuToggler = document.getElementById('menu-toggler');
+    const menuOptions = document.getElementById('menu-options');
+
+    // Funções do Menu de Roteiros
+    function renderMenu(lang) {
+        // Agora, se o idioma não estiver no menuTranslations (o que não deve acontecer após esta correção), usará o PT
+        const links = menuTranslations[lang] || menuTranslations['pt']; 
+
+        menuOptions.innerHTML = '';
+        let i = 1; 
+        links.forEach((link) => {
+            const a = document.createElement('a');
+            a.className = 'menu-option-link';
+            a.href = link.url;
+            
+            // Adicionar Ícone
+            const iconClass = menuIcons[link.name] || 'fa-solid fa-circle-info';
+            a.innerHTML = `${link.name} <i class="${iconClass}"></i>`; 
+
+            a.target = "_self"; // Garante que abre na mesma janela, como solicitado
+            a.style.setProperty('--i', i++);
+            menuOptions.appendChild(a);
+        });
+    }
+
+    /* LÓGICA ATUALIZADA para mudar o ícone entre Menu e X */
+    menuToggler.addEventListener('click', () => {
+        menuOptions.classList.toggle('show');
+        if (menuOptions.classList.contains('show')) {
+            menuToggler.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        } else {
+            menuToggler.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        }
+    });
+    /* FIM LÓGICA ATUALIZADA */
+
+    // Funções de Idiomas (Existente)
     function renderDropdown(current) {
       options.innerHTML = '';
       let i = 1;
@@ -284,13 +548,17 @@
       currentLang.textContent = flagMap[lang];
       renderDropdown(lang);
       options.classList.remove('show');
+      
+      // Chamar a função de renderização do menu com o novo idioma (CORRIGIDO)
+      renderMenu(lang); 
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       const userLang = navigator.language.slice(0,2);
       const supported = Object.keys(texts);
       const lang = supported.includes(userLang) ? userLang : 'en';
-      setLanguage(lang);
+      setLanguage(lang); 
+      // O renderMenu já está dentro de setLanguage, então não precisamos dele aqui
     });
   </script>
 </body>
