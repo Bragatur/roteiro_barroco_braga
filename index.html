@@ -532,7 +532,10 @@
     currentLang.addEventListener('click', () => { options.classList.toggle('show'); });
 
     function setLanguage(lang) {
-      const content = texts[lang] || texts['en'];
+      if (!texts[lang]) {
+        lang = 'en';
+      }
+      const content = texts[lang];
       const btn = document.getElementById("download-button");
 
       document.getElementById("title").textContent = content.title;
