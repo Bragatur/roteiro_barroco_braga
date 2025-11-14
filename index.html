@@ -222,21 +222,6 @@
 
     /* --- FIM: Estilos do Novo Menu Flutuante --- */
 
-    .lang-label {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      font-size: 0.8rem;
-      padding: 6px 12px;
-      border-radius: 12px;
-      margin-top: 8px;
-      letter-spacing: 0.5px;
-      user-select: none;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-      text-align: center;
-      transition: opacity 0.3s;
-      white-space: nowrap;
-    }
-
     .lang-main {
       display: flex;
       flex-direction: column;
@@ -328,22 +313,21 @@
       <div id="current-lang" class="lang-icon">PT</div>
     </div>
     <div class="lang-options"></div>
-    <span class="lang-label" id="lang-label">Idioma / Language</span>
   </div>
 
   <script>
     const texts = {
-      pt: { title: "Roteiro do Barroco em Braga", description: "Descarregue o roteiro turístico em português:", label: "Guia em Português", langLabel: "Alterar idioma" },
-      es: { title: "Ruta del Barroco en Braga", description: "Descargue la guía turística en español:", label: "Guía en Español", langLabel: "Cambiar idioma" },
-      en: { title: "Baroque Route in Braga", description: "Download the tourist guide in English:", label: "Guide in English", langLabel: "Change language" },
-      fr: { title: "Itinéraire Baroque à Braga", description: "Téléchargez le guide touristique en français:", label: "Guia en Français", langLabel: "Changer de langue" },
-      it: { title: "Itinerario Barocco a Braga", description: "Scarica la guida turistica in italiano:", label: "Guida in Italiano", langLabel: "Cambia lingua" },
-      de: { title: "Barockroute in Braga", description: "Laden Sie den Reiseführer auf Deutsch herunter:", label: "Reiseführer auf Deutsch", langLabel: "Sprache ändern" },
-      pl: { title: "Szlak Barokowy w Bradze", description: "Pobierz przewodnik turystyczny po polsku:", label: "Przewodnik po Polsku", langLabel: "Zmień język" },
-      zh: { title: "布拉加巴洛克路线", description: "下载中文旅游指南：", label: "中文指南", langLabel: "更改语言" },
-      ja: { title: "ブラガのバロックルート", description: "日本語の旅行ガイドをダウンロード：", label: "日本語ガイド", langLabel: "言語を変更" },
-      ru: { title: "Барочный маршрут в Браге", description: "Скачайте туристический гид на русском языке:", label: "Гид на русском", langLabel: "Сменить язык" },
-      nl: { title: "Barokroute in Braga", description: "Download de toeristische gids in het Nederlands:", label: "Gids in het Nederlands", langLabel: "Taal wijzigen" },
+      pt: { title: "Roteiro do Barroco em Braga", description: "Descarregue o roteiro turístico em português:", label: "Guia em Português" },
+      es: { title: "Ruta del Barroco en Braga", description: "Descargue la guía turística en español:", label: "Guía en Español" },
+      en: { title: "Baroque Route in Braga", description: "Download the tourist guide in English:", label: "Guide in English" },
+      fr: { title: "Itinéraire Baroque à Braga", description: "Téléchargez le guide touristique en français:", label: "Guia en Français" },
+      it: { title: "Itinerario Barocco a Braga", description: "Scarica la guida turistica in italiano:", label: "Guida in Italiano" },
+      de: { title: "Barockroute in Braga", description: "Laden Sie den Reiseführer auf Deutsch herunter:", label: "Reiseführer auf Deutsch" },
+      pl: { title: "Szlak Barokowy w Bradze", description: "Pobierz przewodnik turystyczny po polsku:", label: "Przewodnik po Polsku" },
+      zh: { title: "布拉加巴洛克路线", description: "下载中文旅游指南：", label: "中文指南" },
+      ja: { title: "ブラガのバロックルート", description: "日本語の旅行ガイドをダウンロード：", label: "日本語ガイド" },
+      ru: { title: "Барочный маршрут в Браге", description: "Скачайте туристический гид на русском языке:", label: "Гид на русском" },
+      nl: { title: "Barokroute in Braga", description: "Download de toeristische gids in het Nederlands:", label: "Gids in het Nederlands" },
     };
 
     const pdfLinks = {
@@ -498,7 +482,6 @@
     const dropdown = document.querySelector('.lang-dropdown');
     const currentLang = document.getElementById('current-lang');
     const options = dropdown.querySelector('.lang-options');
-    const langLabel = document.getElementById('lang-label');
 
     const menuToggler = document.getElementById('menu-toggler');
     const menuOptions = document.getElementById('menu-options');
@@ -573,7 +556,6 @@
       document.documentElement.lang = lang;
       document.title = content.title;
 
-      langLabel.textContent = content.langLabel;
       currentLang.textContent = flagMap[lang];
       renderDropdown(lang);
       options.classList.remove('show');
